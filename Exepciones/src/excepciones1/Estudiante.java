@@ -11,14 +11,16 @@ package excepciones1;
  */
 public class Estudiante {
 
+     // atributos de la clase Estudiante
     private String nombre;
     private String apellido;
-    
+   
+    //constructor de la clase Estudiante con 2 parametros
     public Estudiante(String n, String a){
         nombre = n;
         apellido = a;
     }
-
+       //obtenemos los métodos get y set de la clase
     public void setNombre(String n) {
         nombre = n;
     }
@@ -36,6 +38,8 @@ public class Estudiante {
         
     }
     
+      
+    //sobreescribimos el método toString
     @Override
     public String toString(){
         String cadena = String.format("%s %s",getNombre(),getApellido());

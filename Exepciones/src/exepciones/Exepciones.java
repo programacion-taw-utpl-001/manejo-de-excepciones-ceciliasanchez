@@ -22,7 +22,8 @@ public class Exepciones {
         int edad;
 
         Scanner entrada = new Scanner(System.in);
-
+        
+         // entrada de datos por el teclado
         System.out.println("Ingrese su edad");
         edad = entrada.nextInt();
         entrada.nextLine();

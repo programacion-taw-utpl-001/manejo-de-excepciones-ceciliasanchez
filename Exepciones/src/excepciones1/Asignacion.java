@@ -11,16 +11,19 @@ package excepciones1;
  */
 public class Asignacion {
 
+    //Atribtos de la clase Asignacion
     Estudiante[] lista_estudiante;
     double[] notas_m;
     double[] notas_s;
 
+    //constructor de la clase Asignacion 
     public Asignacion(Estudiante[] lis, double[] nm, double[] ns) {
         lista_estudiante = lis;
         notas_m = nm;
         notas_s = ns;
 
     }
+    //métodos get y set de la clase Asignación
 
     public void setLista(Estudiante[] lista) {
         lista = lista_estudiante;
@@ -45,42 +48,57 @@ public class Asignacion {
     public double[] getNotasS() {
         return notas_s;
     }
-    
-   
 
-    public double obtener_promedio_estudiantes() {
-
-        double prom;
-        double n1 = 0;
-        double n2 = 0;
-
-        for (int i = 0; i < notas_m.length; i++) {
-            n1 = notas_m[i];
-            for (int j = 0; j < notas_s.length; j++) {
-                n2 = notas_s[j];
-            }
+    public double obtener_promedio_matematicas() {
+        double prom = 0;
+        for (int i = 0; i < 4; i++) {
+            prom += notas_m[i];
         }
-        prom = n1 + n2 / 2;
         return prom;
     }
-    
-    public String obtenerlista(){
-        String lista = " ";
-        for (int i = 0; i < lista_estudiante.length; i++) {
-            Estudiante estudiante = lista_estudiante[i];
-            
-        }
-        return lista;
-    }
-    
 
+    public double obtener_promedio_sociales() {
+        double prom = 0;
+        for (int i = 0; i < 4; i++) {
+            prom += notas_s[i];
+        }
+        return prom;
+    }
+
+    double promedio[];
+
+    public double[] promedio_alumno() {
+        double prom[] = new double[4];
+        for (int i = 0; i < promedio.length; i++) {
+
+            //llamamos a los atributos notas matematicas y notas sociales para realizar el promedio de cada alumno
+            prom[i] = (notas_m[i] + notas_s[i]) / 2;
+        }
+        return promedio;
+    }
+
+    // Metodo toString para la lista de estudiantes
+    public String lista_estudiantes() {
+        String cadena = "";
+        for (int i = 0; i < lista_estudiante.length; i++) {
+            cadena += String.format("%s\n"
+                    + "\tMatematicas: %.1f\n"
+                    + "\tSociales: %.1f\n"
+                    + "\tPromedio: %.1f\n\n",
+                    getLista()[i], getNotasM()[i], getNotasS()[i], promedio_alumno()[i]);
+        }
+        return cadena;
+    }
+
+    //sobreescribimos el metodo toString
     @Override
     public String toString() {
-        String cadena = String.format("Reporte Final\n"
+        String cadena = String.format("\n Reporte Final\n"
                 + "Lista Estudiantes\n"
-                + "Matemáticas %s\n"
-                + "Sociales %s\n"
-                + "Promedio %s", getNotasM(), getNotasS(), obtener_promedio_estudiantes());
+                + "%s\n"
+                + "Promedios Generales\n\n"
+                + "Promedio Matemáticas: %s\n"
+                + "Promedio Sociales: %s\n", lista_estudiantes(),obtener_promedio_matematicas(),obtener_promedio_sociales());
         return cadena;
     }
 
